@@ -102,9 +102,11 @@
 	    list: function list () {
 	      // On list change, refresh the paginated list
           this.paginateList()
+          // When modifying list, stay on current page until last object is
+          // removed, then go back one page
           var pages = Math.ceil(this.list.length / this.per);
           if (this.currentPage >= pages) {
-              this.currentPage = 0
+              this.currentPage = this.currentPage - 1;
           }
 	    },
 	    per: function per () {
