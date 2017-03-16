@@ -101,8 +101,11 @@
 	    },
 	    list: function list () {
 	      // On list change, refresh the paginated list
-	      this.currentPage = 0
-	      this.paginateList()
+          this.paginateList()
+          var pages = Math.ceil(this.list.length / this.per);
+          if (this.currentPage >= pages) {
+              this.currentPage = 0
+          }
 	    },
 	    per: function per () {
 	      this.currentPage = 0
@@ -5870,7 +5873,7 @@
 
 	LimitedLinksGenerator.prototype._currentChunkIndex = function _currentChunkIndex () {
 	  var currentChunk = Math.floor(this.currentPage / this.limit)
-	  return currentChunk * this.limit 
+	  return currentChunk * this.limit
 	};
 
 	LimitedLinksGenerator.prototype._allPagesButLast = function _allPagesButLast () {
@@ -6078,7 +6081,7 @@
 	    )
 	    // If the link is a number,
 	    // then incremented by 1 (since it's 0 based).
-	    // otherwise, do nothing (so, it's a symbol). 
+	    // otherwise, do nothing (so, it's a symbol).
 	    var text = Number.isInteger(link) ? link + 1 : link
 	    return h('li', { class: liClasses }, [h('a', data, text)])
 	  })
