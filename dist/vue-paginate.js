@@ -105,7 +105,7 @@
           // When modifying list, stay on current page until last object is
           // removed, then go back one page
           var pages = Math.ceil(this.list.length / this.per);
-          if (this.currentPage >= pages && this.currentPage > 1) {
+          if (this.currentPage >= pages) {
               this.currentPage = this.currentPage - 1;
           }
 	    },
