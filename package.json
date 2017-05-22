@@ -1,6 +1,6 @@
 {
   "name": "vue-paginate",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "A simple vue.js plugin to paginate data",
   "main": "dist/vue-paginate.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "vue"
   ],
   "dependencies": {
-    "vue": "^2.0.5"
+    "vue": "2.3.3"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -73,7 +73,7 @@
     "uglify-js": "^2.6.2",
     "vue-loader": "^10.0.2",
     "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.1.8",
+    "vue-template-compiler": "2.3.3",
     "watchify": "^3.7.0",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"

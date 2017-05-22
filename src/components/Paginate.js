@@ -21,9 +21,6 @@ export default {
     tag: {
       type: String,
       default: 'ul'
-    },
-    class: {
-      type: String
     }
   },
   data () {
@@ -39,6 +36,12 @@ export default {
       set (page) {
         this.$parent.paginate[this.name].page = page
       }
+    },
+    pageItemsCount () {
+      const numOfItems = this.list.length
+      const first = this.currentPage * this.per + 1
+      const last = Math.min((this.currentPage * this.per) + this.per, numOfItems)
+      return `${first}-${last} of ${numOfItems}`
     }
   },
   mounted () {
@@ -70,10 +73,17 @@ export default {
       const index = this.currentPage * this.per
       const paginatedList = this.list.slice(index, index + this.per)
       this.$parent.paginate[this.name].list = paginatedList
+    },
+    goToPage (page) {
+      const maxPage = Math.ceil(this.list.length / this.per)
+      if (page > maxPage) {
+        warn(`You cannot go to page ${page}. The last page is ${maxPage}.`, this.$parent)
+        return
+      }
+      this.currentPage = page - 1
     }
   },
   render (h) {
-    const className = this.class ? this.class : ''
-    return h(this.tag, { class: className }, this.$slots.default)
+    return h(this.tag, {}, this.$slots.default)
   }
 }
